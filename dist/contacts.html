@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ActiveBox</title>
+</head>
+
+<body>
+    
+<!-- Header -->
+<header class="header">
+      <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">
+                <img src="img/logo.png" alt="logo" height="70px" width="70px">
+            </div>
+            <nav class="nav">
+                <a class="nav__link" href="main.html">Главная</a>
+                <a class="nav__link" href="shop.html">Магазин</a>
+                <a class="nav__link" href="info.html">О нас</a>
+                <a class="nav__link" href="contacts.html">Контакты</a>
+            </nav>
+            <div class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="burger_menu">
+    <nav>
+        <li><a href="main.html">Главная</a></li>
+        <li><a href="tests.html">Магазин</a></li>
+        <li><a href="info.html">О нас</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+    </nav>
+</div>
+    <div class="contacts">
+        <div class="container">
+            <div class="contact__info_cont">
+                <div class="contact__info_block1">
+                    <div class="address">
+                        <h3>Адрес и режим работы</h3>
+                      <p> TeaHouse<br>
+                        220005, г. Минск, пр. Независимости, 44-3 <br>
+                        Вход через арку во двор здания "Вечерний Минск"</p>
+                      <p>  Мы открыты с 12:00 до 22:00 без обеда и выходных.</p>
+                        Приём заказов через сайт: круглосуточно <br>
+                        Обработка и доставка заказов: 10:00 - 18:00 (Пн-Пт)
+                    </div>
+                    <div class="map" id="map" style="width: 551px;
+                   height: 293px;"></div>
+                </div>
+                <div class="contact__info_block2">
+                    <img src="img/conttt.png" height="450px" width="550px">
+                    <div class="form">
+                        <form>
+                            <h3>Cвяжитесь с нами</h3>
+                            <input class="text-field__input" type="text" id="name" name="name" required
+                                   placeholder="Ваше имя :  ">
+                            <input class="text-field__input" type="text" id="nam" name="name" required
+                                   placeholder="Номер телефона :">
+                            <textarea class="text-area__input" placeholder="Сообщение :"></textarea>
+                        </form>
+                        <div>
+                            <button class="btn midbtn good" type="submit">Отправить</button>
+                            <button class="btn midbtn bad" type="reset">Очистить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div class="footer__block">
+                    <div class="nolol">+375 29 515 7887</div>
+                    <div class="nolol">TeaHouse@gmail.com</div>
+            </div>
+            <div class="footer__block">
+             <div class="logoi"><img src="img/icon60/vk-png_8249920.png" height="30px" width="30px"><span style="margin-left: 30px; " >TeaHouse</span></div>
+             <div class="logoi"><img src="img/icon60/instagram-logo.png" height="30px" width="30px"><span style="margin-left: 30px; " >TeaHouse</span></div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    let menuBtn = document.querySelector('.menu-btn');
+    let menu = document.querySelector('.burger_menu');
+    menuBtn.addEventListener('click', function(){
+    menuBtn.classList.toggle('active');
+    menu.classList.toggle('active');})
+</script>
+<script>
+    $('.select').each(function() {
+    const _this = $(this),
+        selectOption = _this.find('option'),
+        selectOptionLength = selectOption.length,
+        selectedOption = selectOption.filter(':selected'),
+        duration = 450; 
+
+    _this.hide();
+    _this.wrap('<div class="select"></div>');
+    $('<div>', {
+        class: 'new-select',
+        text: _this.children('option:disabled').text()
+    }).insertAfter(_this);
+
+    const selectHead = _this.next('.new-select');
+    $('<div>', {
+        class: 'new-select__list'
+    }).insertAfter(selectHead);
+
+    const selectList = selectHead.next('.new-select__list');
+    for (let i = 1; i < selectOptionLength; i++) {
+        $('<div>', {
+            class: 'new-select__item',
+            html: $('<span>', {
+                text: selectOption.eq(i).text()
+            })
+        })
+        .attr('data-value', selectOption.eq(i).val())
+        .appendTo(selectList);
+    }
+
+    const selectItem = selectList.find('.new-select__item');
+    selectList.slideUp(0);
+    selectHead.on('click', function() {
+        if ( !$(this).hasClass('on') ) {
+            $(this).addClass('on');
+            selectList.slideDown(duration);
+
+            selectItem.on('click', function() {
+                let chooseItem = $(this).data('value');
+
+                $('select').val(chooseItem).attr('selected', 'selected');
+                selectHead.text( $(this).find('span').text() );
+
+                selectList.slideUp(duration);
+                selectHead.removeClass('on');
+            });
+
+        } else {
+            $(this).removeClass('on');
+            selectList.slideUp(duration);
+        }
+    });
+});
+</script>
+    <script>
+        function myMap() {
+            var mapCanvas = document.getElementById("map");
+            var mapOptions = {
+                center: new google.maps.LatLng(51.5, -0.2), zoom: 10
+            };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDR8P72HMX3zllKeeZt8X89dJWMEu0LSX8&callback=myMap"
+        async defer></script>
+    </div>
+</body>
+
+</html>

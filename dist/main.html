@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>ActiveBox</title>
+</head>
+
+<body>
+    
+<!-- Header -->
+<header class="header">
+      <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">
+                <img src="img/logo.png" alt="logo" height="70px" width="70px">
+            </div>
+            <nav class="nav">
+                <a class="nav__link" href="main.html">Главная</a>
+                <a class="nav__link" href="shop.html">Магазин</a>
+                <a class="nav__link" href="info.html">О нас</a>
+                <a class="nav__link" href="contacts.html">Контакты</a>
+            </nav>
+            <div class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="burger_menu">
+    <nav>
+        <li><a href="main.html">Главная</a></li>
+        <li><a href="tests.html">Магазин</a></li>
+        <li><a href="info.html">О нас</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+    </nav>
+</div>
+    <!-- Intro -->
+
+    <div class="intro">
+        <div class="container">
+            <div class="intro__inner">
+                <div class="main_con">
+                    <aside>
+                        <div class="aside__inner">
+                            <h3>Помогите нам стать лучше для вас !</h3>
+                            <form action="#" class="form__1">
+                                <h3>Нравится ли вам у нас ?</h3>
+                                <div>
+                                    <input id="ll" type="radio" name="cc" value="да">
+                                    <label for="ll">Да</label>
+                                    <input id="lol" type="radio" name="cc" value="да" checked>
+                                    <label for="lol">Нет</label>
+                                </div>
+                                <h3>Что для вас самое главное?</h3>
+                                <div>
+                                    <input type="checkbox" id="rns00" name="horns">
+                                    <label for="rns00">Атмосфера</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="rns0000" name="horns">
+                                    <label for="rns0000">Ассортимент</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="rns" name="horns">
+                                    <label for="rns">Расположение</label>
+                                </div>
+
+                                <select class="select" name="language">
+                                    <option disabled>Виберите любимий чай</option>
+                                    <option value="HTML">Чай1</option>
+                                    <option value="JavaScript">Чай2</option>
+                                    <option value="PHP">Чай3</option>
+                                </select>
+                                <div>
+                                    <button class="litbtn text-center good" type="submit">Найти</button>
+                                    <button class="litbtn text-center bad" type="reset">Oтмена</button>
+                                </div>
+                            </form>
+                        </div>
+                    </aside>
+                    <div class="info">
+                        <h1>ОСТОРОЖНО!</h1>
+                        <p>Каждый правильно приготовленный напиток имеет глубокий вкус и головокружащий аромат, что
+                            может вызвать привыкание :) </p>
+                        <button class="btn bigbtn">Заглянуть</button>
+                    </div>
+                </div>
+                <div class="imges">
+                    <img class="img1" src="img/packetmain.png" alt="im0" width="530px" height="530px">
+                    <img class="img2" src="img/cupmain.png" alt="im1" width="680px" height="595px">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div class="footer__block">
+                    <div class="nolol">+375 29 515 7887</div>
+                    <div class="nolol">TeaHouse@gmail.com</div>
+            </div>
+            <div class="footer__block">
+             <div class="logoi"><img src="img/icon60/vk-png_8249920.png" height="30px" width="30px"><span style="margin-left: 30px; " >TeaHouse</span></div>
+             <div class="logoi"><img src="img/icon60/instagram-logo.png" height="30px" width="30px"><span style="margin-left: 30px; " >TeaHouse</span></div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    let menuBtn = document.querySelector('.menu-btn');
+    let menu = document.querySelector('.burger_menu');
+    menuBtn.addEventListener('click', function(){
+    menuBtn.classList.toggle('active');
+    menu.classList.toggle('active');})
+</script>
+<script>
+    $('.select').each(function() {
+    const _this = $(this),
+        selectOption = _this.find('option'),
+        selectOptionLength = selectOption.length,
+        selectedOption = selectOption.filter(':selected'),
+        duration = 450; 
+
+    _this.hide();
+    _this.wrap('<div class="select"></div>');
+    $('<div>', {
+        class: 'new-select',
+        text: _this.children('option:disabled').text()
+    }).insertAfter(_this);
+
+    const selectHead = _this.next('.new-select');
+    $('<div>', {
+        class: 'new-select__list'
+    }).insertAfter(selectHead);
+
+    const selectList = selectHead.next('.new-select__list');
+    for (let i = 1; i < selectOptionLength; i++) {
+        $('<div>', {
+            class: 'new-select__item',
+            html: $('<span>', {
+                text: selectOption.eq(i).text()
+            })
+        })
+        .attr('data-value', selectOption.eq(i).val())
+        .appendTo(selectList);
+    }
+
+    const selectItem = selectList.find('.new-select__item');
+    selectList.slideUp(0);
+    selectHead.on('click', function() {
+        if ( !$(this).hasClass('on') ) {
+            $(this).addClass('on');
+            selectList.slideDown(duration);
+
+            selectItem.on('click', function() {
+                let chooseItem = $(this).data('value');
+
+                $('select').val(chooseItem).attr('selected', 'selected');
+                selectHead.text( $(this).find('span').text() );
+
+                selectList.slideUp(duration);
+                selectHead.removeClass('on');
+            });
+
+        } else {
+            $(this).removeClass('on');
+            selectList.slideUp(duration);
+        }
+    });
+});
+</script>
+    </div>
+</body>
+
+</html>

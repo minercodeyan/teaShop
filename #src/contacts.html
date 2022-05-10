@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ActiveBox</title>
+</head>
+
+<body>
+    @@include("_header.html")
+    <div class="contacts">
+        <div class="container">
+            <div class="contact__info_cont">
+                <div class="contact__info_block1">
+                    <div class="address">
+                        <h3>Адрес и режим работы</h3>
+                      <p> TeaHouse<br>
+                        220005, г. Минск, пр. Независимости, 44-3 <br>
+                        Вход через арку во двор здания "Вечерний Минск"</p>
+                      <p>  Мы открыты с 12:00 до 22:00 без обеда и выходных.</p>
+                        Приём заказов через сайт: круглосуточно <br>
+                        Обработка и доставка заказов: 10:00 - 18:00 (Пн-Пт)
+                    </div>
+                    <div class="map" id="map" style="width: 551px;
+                   height: 293px;"></div>
+                </div>
+                <div class="contact__info_block2">
+                    <img src="img/conttt.png" height="450px" width="550px">
+                    <div class="form">
+                        <form>
+                            <h3>Cвяжитесь с нами</h3>
+                            <input class="text-field__input" type="text" id="name" name="name" required
+                                   placeholder="Ваше имя :  ">
+                            <input class="text-field__input" type="text" id="nam" name="name" required
+                                   placeholder="Номер телефона :">
+                            <textarea class="text-area__input" placeholder="Сообщение :"></textarea>
+                        </form>
+                        <div>
+                            <button class="btn midbtn good" type="submit">Отправить</button>
+                            <button class="btn midbtn bad" type="reset">Очистить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    @@include("_footer.html")
+    <script>
+        function myMap() {
+            var mapCanvas = document.getElementById("map");
+            var mapOptions = {
+                center: new google.maps.LatLng(51.5, -0.2), zoom: 10
+            };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDR8P72HMX3zllKeeZt8X89dJWMEu0LSX8&callback=myMap"
+        async defer></script>
+    </div>
+</body>
+
+</html>

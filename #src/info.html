@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ActiveBox</title>
+</head>
+
+<body>
+    @@include("_header.html")
+    <div class="questions">
+        <div class="container">
+            <div class="bodyy">
+                <img class="imgll" src="img/infoooo.png" height="700" width="500">
+                <div class="main_text">
+                  <p> TeaHouse — не просто магазинчик правильного чая в Минске. Это команда единомышленников, окончательно и бесповоротно влюбленных в легендарный и неповторимый напиток — чай. </p>
+                  <p>Наша миссия — привнести правильный, а главное — качественный чай в каждый дом. Именно поэтому мы тщательно следим, чтобы наши цены всегда были выгодными и доступными — в магазинчике действует гибкая система скидок и подарков к заказам. </p>                  
+                </div>
+                <div class="slider">
+                    <div class="slider-line">
+                        <img src="./img/slider/IMG_3025 1.png" alt="lol" width="300px" height="400px">
+                        <img src="./img/slider/IMG_3026 1.png" alt="lolol" width="300px" height="150px">
+                        <img src="./img/slider/IMG_3027 1.png" alt="lolololo" width="300px" height="150px">
+                        <img src="./img/slider/IMG_3028 1.png" alt="lolololool" width="300px" height="150px">
+                    </div>
+                </div>
+                <div class="slider_items">
+                    <span id="prev">< </span>
+                    <span> 
+                    <svg height="20" width="20">
+                        <circle  cx="10" cy="10"  r="8"  fill="grey" />
+                     </svg>
+                     </span>
+                    <span>
+                         <svg height="20" width="20">
+                            <circle  cx="10" cy="10"  r="8"  fill="grey" />
+                         </svg> 
+                      </span>
+                    <span><svg height="20" width="20">
+                        <circle  cx="10" cy="10"  r="8"  fill="green" />
+                     </svg>
+                      </span>
+                      <span><svg height="20" width="20">
+                        <circle  cx="10" cy="10"  r="8" fill="green" />
+                     </svg>
+                      </span>
+                    <span id="next"> ></span>
+                </div>  
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    @@include("_footer.html")
+    <script>
+        let offset=0;
+        const sliderLine = document.querySelector(".slider-line")
+        document.getElementById("next").addEventListener('click',function(){
+            offset=offset+300;
+            if(offset>300*3){
+                offset=0;
+            }
+            sliderLine.style.left= -offset+'px';
+        })
+        document.getElementById("prev").addEventListener('click',function(){
+            offset=offset-300;
+            if(offset<0){
+                offset=900;
+            }
+            sliderLine.style.left= -offset+'px';
+        })
+    </script>
+</body>
+
+</html>

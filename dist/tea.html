@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ActiveBox</title>
+</head>
+
+<body>
+    
+<!-- Header -->
+<header class="header">
+      <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">
+                <img src="img/logo.png" alt="logo" height="70px" width="70px">
+            </div>
+            <nav class="nav">
+                <a class="nav__link" href="main.html">Главная</a>
+                <a class="nav__link" href="shop.html">Магазин</a>
+                <a class="nav__link" href="info.html">О нас</a>
+                <a class="nav__link" href="contacts.html">Контакты</a>
+            </nav>
+            <div class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="burger_menu">
+    <nav>
+        <li><a href="main.html">Главная</a></li>
+        <li><a href="tests.html">Магазин</a></li>
+        <li><a href="info.html">О нас</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+    </nav>
+</div>
+    <div class="contacts">
+        <div class="container">
+            <div class="tea_row">
+              <div class="col1">
+                <img src="img/works/BLACK TEA BLACK MOUNTAIN FRUIT.png" alt="" height="270" width="256">
+              </div>
+              
+              <div class="col2">
+                <h1>TEA</h1>
+              <p> Освежающая смесь зеленого чая, вдохновленная самым известным кубинским коктейлем.</p>
+              
+              <p>  Смесь, созданная для того, чтобы удовлетворить моменты вечеринок и отдыха. 
+                С легким тоником и большим количеством льда вы получите непревзойденное освежение. 
+                А для более праздничных вечеров вы можете добавить немного рома.  Зеленый чай обладает особым мочегонным действием и богат антиоксидантами.
+                 Мята перечная - это ароматическое растение, которое способствует пищеварению и снижает кислотность.</p>
+                
+               <p> Один Уровень: Низкий.</p>
+                
+              <p>Способ приготовления: Настаивание при температуре 75°C в течение 2 мин.</p>
+                
+             <p>   Состав: Зеленый чай, цедра лимона, мята, лепестки василька, ароматизаторы.</p>
+                
+              <p> Не содержит сахара или аллергенов.<br>
+                Не рекомендуется для детей и беременных женщин.</p>
+                
+             <p>   Аромат<br>
+                Сладкий/Фруктовый</p>
+                
+             <p>  Цвет<br>
+                Бледно-зеленый</p>
+                
+              </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div class="footer__block">
+                    <div class="nolol">+375 29 515 7887</div>
+                    <div class="nolol">TeaHouse@gmail.com</div>
+            </div>
+            <div class="footer__block">
+             <div class="logoi"><img src="img/icon60/vk-png_8249920.png" height="30px" width="30px"><span style="margin-left: 30px; " >TeaHouse</span></div>
+             <div class="logoi"><img src="img/icon60/instagram-logo.png" height="30px" width="30px"><span style="margin-left: 30px; " >TeaHouse</span></div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    let menuBtn = document.querySelector('.menu-btn');
+    let menu = document.querySelector('.burger_menu');
+    menuBtn.addEventListener('click', function(){
+    menuBtn.classList.toggle('active');
+    menu.classList.toggle('active');})
+</script>
+<script>
+    $('.select').each(function() {
+    const _this = $(this),
+        selectOption = _this.find('option'),
+        selectOptionLength = selectOption.length,
+        selectedOption = selectOption.filter(':selected'),
+        duration = 450; 
+
+    _this.hide();
+    _this.wrap('<div class="select"></div>');
+    $('<div>', {
+        class: 'new-select',
+        text: _this.children('option:disabled').text()
+    }).insertAfter(_this);
+
+    const selectHead = _this.next('.new-select');
+    $('<div>', {
+        class: 'new-select__list'
+    }).insertAfter(selectHead);
+
+    const selectList = selectHead.next('.new-select__list');
+    for (let i = 1; i < selectOptionLength; i++) {
+        $('<div>', {
+            class: 'new-select__item',
+            html: $('<span>', {
+                text: selectOption.eq(i).text()
+            })
+        })
+        .attr('data-value', selectOption.eq(i).val())
+        .appendTo(selectList);
+    }
+
+    const selectItem = selectList.find('.new-select__item');
+    selectList.slideUp(0);
+    selectHead.on('click', function() {
+        if ( !$(this).hasClass('on') ) {
+            $(this).addClass('on');
+            selectList.slideDown(duration);
+
+            selectItem.on('click', function() {
+                let chooseItem = $(this).data('value');
+
+                $('select').val(chooseItem).attr('selected', 'selected');
+                selectHead.text( $(this).find('span').text() );
+
+                selectList.slideUp(duration);
+                selectHead.removeClass('on');
+            });
+
+        } else {
+            $(this).removeClass('on');
+            selectList.slideUp(duration);
+        }
+    });
+});
+</script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ActiveBox</title>
+</head>
+
+<body>
+    
+<!-- Header -->
+<header class="header">
+      <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">
+                <img src="img/logo.png" alt="logo" height="70px" width="70px">
+            </div>
+            <nav class="nav">
+                <a class="nav__link" href="main.html">Главная</a>
+                <a class="nav__link" href="shop.html">Магазин</a>
+                <a class="nav__link" href="info.html">О нас</a>
+                <a class="nav__link" href="contacts.html">Контакты</a>
+            </nav>
+            <div class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="burger_menu">
+    <nav>
+        <li><a href="main.html">Главная</a></li>
+        <li><a href="tests.html">Магазин</a></li>
+        <li><a href="info.html">О нас</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+    </nav>
+</div>
+    <div class="questions">
+        <div class="container">
+            <div class="bodyy">
+                <img class="imgll" src="img/infoooo.png" height="700" width="500">
+                <div class="main_text">
+                  <p> TeaHouse — не просто магазинчик правильного чая в Минске. Это команда единомышленников, окончательно и бесповоротно влюбленных в легендарный и неповторимый напиток — чай. </p>
+                  <p>Наша миссия — привнести правильный, а главное — качественный чай в каждый дом. Именно поэтому мы тщательно следим, чтобы наши цены всегда были выгодными и доступными — в магазинчике действует гибкая система скидок и подарков к заказам. </p>                  
+                </div>
+                <div class="slider">
+                    <div class="slider-line">
+                        <img src="./img/slider/IMG_3025 1.png" alt="lol" width="300px" height="400px">
+                        <img src="./img/slider/IMG_3026 1.png" alt="lolol" width="300px" height="150px">
+                        <img src="./img/slider/IMG_3027 1.png" alt="lolololo" width="300px" height="150px">
+                        <img src="./img/slider/IMG_3028 1.png" alt="lolololool" width="300px" height="150px">
+                    </div>
+                </div>
+                <div class="slider_items">
+                    <span id="prev">< </span>
+                    <span> 
+                    <svg height="20" width="20">
+                        <circle  cx="10" cy="10"  r="8"  fill="grey" />
+                     </svg>
+                     </span>
+                    <span>
+                         <svg height="20" width="20">
+                            <circle  cx="10" cy="10"  r="8"  fill="grey" />
+                         </svg> 
+                      </span>
+                    <span><svg height="20" width="20">
+                        <circle  cx="10" cy="10"  r="8"  fill="green" />
+                     </svg>
+                      </span>
+                      <span><svg height="20" width="20">
+                        <circle  cx="10" cy="10"  r="8" fill="green" />
+                     </svg>
+                      </span>
+                    <span id="next"> ></span>
+                </div>  
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div class="footer__block">
+                    <div class="nolol">+375 29 515 7887</div>
+                    <div class="nolol">TeaHouse@gmail.com</div>
+            </div>
+            <div class="footer__block">
+             <div class="logoi"><img src="img/icon60/vk-png_8249920.png" height="30px" width="30px"><span style="margin-left: 30px; " >TeaHouse</span></div>
+             <div class="logoi"><img src="img/icon60/instagram-logo.png" height="30px" width="30px"><span style="margin-left: 30px; " >TeaHouse</span></div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    let menuBtn = document.querySelector('.menu-btn');
+    let menu = document.querySelector('.burger_menu');
+    menuBtn.addEventListener('click', function(){
+    menuBtn.classList.toggle('active');
+    menu.classList.toggle('active');})
+</script>
+<script>
+    $('.select').each(function() {
+    const _this = $(this),
+        selectOption = _this.find('option'),
+        selectOptionLength = selectOption.length,
+        selectedOption = selectOption.filter(':selected'),
+        duration = 450; 
+
+    _this.hide();
+    _this.wrap('<div class="select"></div>');
+    $('<div>', {
+        class: 'new-select',
+        text: _this.children('option:disabled').text()
+    }).insertAfter(_this);
+
+    const selectHead = _this.next('.new-select');
+    $('<div>', {
+        class: 'new-select__list'
+    }).insertAfter(selectHead);
+
+    const selectList = selectHead.next('.new-select__list');
+    for (let i = 1; i < selectOptionLength; i++) {
+        $('<div>', {
+            class: 'new-select__item',
+            html: $('<span>', {
+                text: selectOption.eq(i).text()
+            })
+        })
+        .attr('data-value', selectOption.eq(i).val())
+        .appendTo(selectList);
+    }
+
+    const selectItem = selectList.find('.new-select__item');
+    selectList.slideUp(0);
+    selectHead.on('click', function() {
+        if ( !$(this).hasClass('on') ) {
+            $(this).addClass('on');
+            selectList.slideDown(duration);
+
+            selectItem.on('click', function() {
+                let chooseItem = $(this).data('value');
+
+                $('select').val(chooseItem).attr('selected', 'selected');
+                selectHead.text( $(this).find('span').text() );
+
+                selectList.slideUp(duration);
+                selectHead.removeClass('on');
+            });
+
+        } else {
+            $(this).removeClass('on');
+            selectList.slideUp(duration);
+        }
+    });
+});
+</script>
+    <script>
+        let offset=0;
+        const sliderLine = document.querySelector(".slider-line")
+        document.getElementById("next").addEventListener('click',function(){
+            offset=offset+300;
+            if(offset>300*3){
+                offset=0;
+            }
+            sliderLine.style.left= -offset+'px';
+        })
+        document.getElementById("prev").addEventListener('click',function(){
+            offset=offset-300;
+            if(offset<0){
+                offset=900;
+            }
+            sliderLine.style.left= -offset+'px';
+        })
+    </script>
+</body>
+
+</html>
